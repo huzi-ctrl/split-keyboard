@@ -1,6 +1,32 @@
 name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
+  release:
+    needs: build
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download built firmware artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: firmware
+          path: firmware
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: "PKB Firmware v1.0.${{ github.run_number }}"
+          body: |
+            Automated ZMK firmware build for **PKB** (`seeeduino_xiao_ble`).
+            - **Left Half (Central):** `pkb_left-seeeduino_xiao_ble-zmk.uf2`
+            - **Right Half (Peripheral):** `pkb_right-seeeduino_xiao_ble-zmk.uf2`
+          files: firmware/*
+          make_latest: "true"

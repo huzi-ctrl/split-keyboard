@@ -87,9 +87,7 @@ The OLED display acts as a live status dashboard:
 ## How to Flash Firmware to the Keyboard
 
 1. **Download the Built Firmware**:
-   - Open the [**GitHub Actions**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/actions) tab on GitHub.
-   - Click the latest successful workflow run at the top.
-   - Under **Artifacts**, click **`firmware`** to download `firmware.zip` and extract it:
+   - Go to the [**Releases**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/releases/latest) page on GitHub (or the [**GitHub Actions**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/actions) tab) and download the two `.uf2` files:
      - `pkb_left-seeeduino_xiao_ble-zmk.uf2`
      - `pkb_right-seeeduino_xiao_ble-zmk.uf2`
 
