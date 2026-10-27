@@ -16,7 +16,7 @@ config ZMK_SPLIT
 config I2C
     default y
 
-config GPIO_PCF857X
+config GPIO_PCF8574
     default y
 
 config ZMK_KSCAN_MATRIX_POLLING

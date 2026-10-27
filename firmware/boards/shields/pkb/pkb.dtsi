@@ -59,14 +59,14 @@
 };
 
 &pinctrl {
-    // I2C1 (xiao_i2c) remapped from D4/D5 (used by COL3/COL4) to D9 (SCL) and D10 (SDA)
-    i2c1_default: i2c1_default {
+    // I2C0 (xiao_i2c) remapped from D4/D5 (used by COL3/COL4) to D9 (SCL) and D10 (SDA)
+    i2c0_default: i2c0_default {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 1, 15)>, // P1.15_D10_MOSI (Pin 11) -> SDA
                     <NRF_PSEL(TWIM_SCL, 1, 14)>; // P1.14_D9_MISO  (Pin 10) -> SCL
         };
     };
-    i2c1_sleep: i2c1_sleep {
+    i2c0_sleep: i2c0_sleep {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 1, 15)>,
                     <NRF_PSEL(TWIM_SCL, 1, 14)>;
@@ -90,15 +90,15 @@
 
 &xiao_i2c {
     status = "okay";
-    pinctrl-0 = <&i2c1_default>;
-    pinctrl-1 = <&i2c1_sleep>;
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
     clock-frequency = <I2C_BITRATE_STANDARD>;
 
     // U4: PCF8574AP with A0=A1=A2=GND -> I2C address 0x38
     // (Note: If using a non-'A' PCF8574 chip, change 0x38 to 0x20)
     pcf8574: pcf8574@38 {
-        compatible = "nxp,pcf857x";
+        compatible = "nxp,pcf8574";
         status = "okay";
         reg = <0x38>;
         gpio-controller;
@@ -134,7 +134,6 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
-        label = "SK6812";
         reg = <0>;
         spi-max-frequency = <4000000>;
         chain-length = <21>; // 21 SK6812MINI LEDs per board half
