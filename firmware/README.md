@@ -1,6 +1,19 @@
 # PKB — 42-Key Wireless Split Keyboard (ZMK Firmware)
 
+[![Build & Release ZMK Firmware](https://github.com/huzi-ctrl/zmk-config-split-keyboard/actions/workflows/build.yml/badge.svg)](https://github.com/huzi-ctrl/zmk-config-split-keyboard/actions/workflows/build.yml)
+[![Latest Release](https://img.shields.io/github/v/release/huzi-ctrl/zmk-config-split-keyboard?label=Download%20Latest%20Firmware)](https://github.com/huzi-ctrl/zmk-config-split-keyboard/releases/latest)
+
 ZMK firmware configuration for the **PKB** 40% (42-key) wireless split keyboard powered by the **Seeed Studio XIAO nRF52840** (`seeeduino_xiao_ble`).
+
+---
+
+## Quick Download (Pre-Built Firmware)
+
+Every push automatically builds the firmware and publishes a new **GitHub Release** with the ready-to-flash `.uf2` files attached:
+
+- **[Download Latest Firmware Release](https://github.com/huzi-ctrl/zmk-config-split-keyboard/releases/latest)**
+  - **Left Half (Central):** `pkb_left-seeeduino_xiao_ble-zmk.uf2`
+  - **Right Half (Peripheral):** `pkb_right-seeeduino_xiao_ble-zmk.uf2`
 
 ---
 
@@ -77,17 +90,24 @@ Includes F-keys, Numpad, **RGB Underglow toggle**, **External Power (`VLED`) tog
 ## 128×32 OLED Display
 
 The OLED display acts as a live status dashboard:
+```text
++-----------------------------------+
+| BT 1 ✓                      🔋 85% |  <-- Top-Left: USB / BT Profile | Top-Right: Battery %
+| QWERTY                            |  <-- Bottom-Left: Active Layer ("QWERTY", "CODE / NAV", "NUM / FN")
++-----------------------------------+
+```
 - **Top-Left**: Output status (`USB` or `BT 1`–`4` connection state on the left half; split wireless link icon on the right half).
 - **Top-Right**: Battery icon + **numeric battery percentage (`%`)**.
 - **Bottom-Left**: Active layer name (`QWERTY`, `CODE / NAV`, `NUM / FN`).
-- **Auto-Off**: Automatically blanks after **30 seconds** of inactivity to save battery and prevent OLED burn-in, and wakes immediately on any key press.
+- **Auto-Off**: Automatically blanks after **30 seconds** of inactivity to save battery and prevent OLED burn-in, and wakes immediately on any key press. Deep sleep activates after **15 minutes** of inactivity.
 
 ---
 
 ## How to Flash Firmware to the Keyboard
 
-1. **Download the Built Firmware**:
-   - Go to the [**Releases**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/releases/latest) page on GitHub (or the [**GitHub Actions**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/actions) tab) and download the two `.uf2` files:
+1. **Download the `.uf2` Files**:
+   - Open the [**Latest Release**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/releases/latest) page on GitHub.
+   - Under **Assets**, download both `.uf2` files directly:
      - `pkb_left-seeeduino_xiao_ble-zmk.uf2`
      - `pkb_right-seeeduino_xiao_ble-zmk.uf2`
 
