@@ -1,0 +1,21 @@
+// This file was generated from a template. Edit it to match your keyboard.
+// See https://zmk.dev/docs/development/hardware-integration/new-shield for more
+// instructions.
+
+#include "pkb.dtsi"
+
+&default_transform {
+    // Set this to the number of columns on the left side.
+    col-offset = <5>;
+};
+
+&kscan0 {
+    // COL0..COL4 on XIAO pins D1..D5 (active-low outputs for col2row scanning with PCF8574AP)
+    col-gpios
+        = <&xiao_d 1 GPIO_ACTIVE_LOW> // COL0 -> P0.03_A1_D1 (Pin 2)
+        , <&xiao_d 2 GPIO_ACTIVE_LOW> // COL1 -> P0.28_A2_D2 (Pin 3)
+        , <&xiao_d 3 GPIO_ACTIVE_LOW> // COL2 -> P0.29_A3_D3 (Pin 4)
+        , <&xiao_d 4 GPIO_ACTIVE_LOW> // COL3 -> P0.04_A4_D4_SDA (Pin 5)
+        , <&xiao_d 5 GPIO_ACTIVE_LOW> // COL4 -> P0.05_A5_D5_SCL (Pin 6)
+        ;
+};

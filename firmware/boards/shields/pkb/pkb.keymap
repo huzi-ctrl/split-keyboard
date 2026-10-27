@@ -1,0 +1,76 @@
+// This file was generated from a template. Edit it to match your keyboard.
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+// Name your layers for the code
+#define BASE 0
+#define CODE_NAV 1
+#define NUMPAD 2
+
+/ {
+    // 1. Define the Tap-Dance Behaviors
+    behaviors {
+        // Left Thumb: 1 Tap = Space, 2 Taps = Toggle Layer 1
+        td_spc_nav: tap_dance_space_nav {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp SPACE>, <&tog CODE_NAV>; 
+        };
+
+        // Right Thumb: 1 Tap = Backspace, 2 Taps = Toggle Layer 2
+        td_bspc_num: tap_dance_bspc_num {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp BSPC>, <&tog NUMPAD>; 
+        };
+    };
+
+    // 2. The Keymap
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            display-name = "QWERTY";
+            bindings = <
+            // Left Half                                   // Right Half
+            &kp Q     &kp W     &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I     &kp O   &kp P
+            &kp A     &kp S     &kp D    &kp F    &kp G    &kp H    &kp J    &kp K     &kp L   &kp SEMI
+            &kp Z     &kp X     &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA &kp DOT &kp SLASH
+            &kp LCTRL &kp LSHFT &kp LALT &kp LGUI &kp ESC  &kp RGUI &kp RALT &kp RSHFT &kp RCTRL &kp RET
+            
+            // Left Thumb                                  // Right Thumb
+                                         &td_spc_nav                                &td_bspc_num
+            >;
+        };
+
+        code_nav_layer {
+            display-name = "Code & Nav";
+            bindings = <
+            // Left Half: Brackets & Symbols               // Right Half: Arrows & Navigation
+            &kp GRAVE &kp LBKT  &kp RBKT  &kp MINUS &kp EQUAL  &kp PG_UP &kp HOME &kp UP   &kp END   &kp DEL
+            &kp TILDE &kp LBRC  &kp RBRC  &kp UNDER &kp PLUS   &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans
+            &trans    &kp BSLH  &kp PIPE  &kp LT    &kp GT     &trans    &trans   &trans   &trans    &trans
+            &trans    &trans    &trans    &trans    &trans     &trans    &trans   &trans   &trans    &trans
+            
+            // Left Thumb (Double-tap to turn off!)        // Right Thumb
+                                         &td_spc_nav                                &trans
+            >;
+        };
+
+        numpad_layer {
+            display-name = "Numpad & F-Keys";
+            bindings = <
+            // Left Half: F-Keys                           // Right Half: Numpad
+            &kp F1    &kp F2    &kp F3    &kp F4    &kp F5     &kp SLASH &kp N7 &kp N8 &kp N9 &kp MINUS
+            &kp F6    &kp F7    &kp F8    &kp F9    &kp F10    &kp STAR  &kp N4 &kp N5 &kp N6 &kp PLUS
+            &kp F11   &kp F12   &trans    &trans    &trans     &kp N0    &kp N1 &kp N2 &kp N3 &kp DOT
+            &trans    &trans    &trans    &trans    &trans     &trans    &trans   &trans   &trans    &trans
+            
+            // Left Thumb                                  // Right Thumb (Double-tap to turn off!)
+                                         &trans                                     &td_bspc_num
+            >;
+        };
+    };
+};
