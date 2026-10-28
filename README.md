@@ -121,6 +121,53 @@ Pre-built `.uf2` firmware binaries are automatically compiled by GitHub Actions 
 
 ---
 
+## Build & Assembly Guide
+
+### Step 1: Depanelize the PCB
+1. The left and right keyboard halves are manufactured as a single panel joined by three mouse-bite breakaway tabs (`BO1`, `BO2`, `BO3`) along the center spine.
+2. Gently flex or snip along the perforated mouse-bite slots using flush cutters to separate the **Left** and **Right** PCBs, then lightly sand the tab edges flush.
+
+### Step 2: Solder Reverse-Mount RGB LEDs (`D63`–`D104`)
+1. Flip the PCB to the **bottom (`B.Cu`)** layer.
+2. Solder the 21× **SK6812MINI-E** reverse-mount addressable RGB LEDs per half so their lenses shine upward through the rectangular switch LED cutouts.
+   - **Important**: Align the notched/beveled corner (`Pin 3 = GND`) of each SK6812MINI-E with the silkscreen marker on the PCB.
+   - Use a temperature-controlled soldering iron at **$280\text{--}300\,^\circ\text{C}$** (or low-temp solder paste + hot air) to avoid overheating the plastic LED packages.
+
+### Step 3: Solder Matrix Diodes (`D1`–`D42`) & SMD MOSFETs (`Q1`–`Q4`)
+1. **Matrix Diodes (`D1`–`D42`)**: The `ComboDiode` footprints support either **1N4148W (SOD-123 SMD)** diodes on `F.Cu` or `B.Cu`, or **1N4148 (DO-35 through-hole)** diodes. Orient every diode's cathode band (`|◁`) toward the square pad (`K`).
+2. **High-Side LED Power Switch (`Q1`–`Q4`)**: Solder the SOT-23 NMOS (`Q1`, `Q2`) and PMOS (`Q3`, `Q4`) transistors onto their designated SMD pads near the microcontroller area on each half.
+
+### Step 4: Solder Passive Components & IC Expanders (`U3`, `U4`)
+1. Solder the **100 nF decoupling capacitors** (`C1`–`C42`) next to each RGB LED, plus the **100 µF bulk radial capacitors** (`C43`, `C44`) across the `VLED` power rails.
+2. Solder the axial resistors on each half:
+   - **$4.7\text{ k}\Omega$** (`R1`–`R6`): I2C `SDA`/`SCL` pull-ups and `/INT` pull-ups.
+   - **$10\text{ k}\Omega$** (`R7`, `R8`) & **$100\text{ k}\Omega$** (`R9`, `R10`): MOSFET gate bias/pull-down resistors.
+   - **$330\text{ }\Omega$** (`R11`, `R12`): RGB `DIN` data-line series resistors.
+3. Solder the **PCF8574AP** DIP-16 I2C I/O expanders (`U3`, `U4`)—or DIP-16 IC sockets—ensuring the Pin 1 half-moon notch matches the PCB silkscreen.
+
+### Step 5: Solder Hot-Swap Sockets, Switches & Peripherals
+1. **Kailh MX Hot-Swap Sockets (`SW1`–`SW42`)**: On the **bottom (`B.Cu`)** side of the PCB, solder all 42 Kailh Choc/MX hot-swap sockets onto their wide SMD pads, making sure they sit flat against the board and do not obstruct the switch center hole.
+2. **Seeed Studio XIAO nRF52840 (`U1`, `U2`)**:
+   - Before soldering the XIAO down, solder two short wire leads onto the **battery `+` and `-` pads** on the underside of the XIAO nRF52840 and route them to the PCB's battery input pads (`J1`/`J2`) and slide power switch (`SW43`/`SW44`).
+   - Solder the XIAO nRF52840 onto the PCB using pin headers or low-profile Mill-Max sockets with the USB-C port facing outward toward the top edge of the board.
+3. **128×32 SSD1306 OLED Display (`J3`, `J4`)**: Solder the 4-pin OLED header (`GND`, `VCC`, `SCL`, `SDA`) so the OLED sits above the XIAO footprint.
+4. **Slide Power Switch (`SW43`, `SW44`) & LiPo Battery (`J1`, `J2`)**: Solder the 3-pin slide switch and the 2-pin JST-PH 2.0 mm battery connector.
+
+### Step 6: Flash ZMK Firmware & Pair Halves
+1. Download the latest `.uf2` files from [**GitHub Releases**](https://github.com/huzi-ctrl/zmk-config-split-keyboard/releases/latest):
+   - `pkb_left-seeeduino_xiao_ble-zmk.uf2`
+   - `pkb_right-seeeduino_xiao_ble-zmk.uf2`
+2. Connect the **Left XIAO nRF52840** to your computer via USB-C and **double-click its onboard Reset button**—it will mount as a removable drive named `XIAO-SENSE`.
+3. Drag and drop `pkb_left-seeeduino_xiao_ble-zmk.uf2` onto the drive. Repeat with `pkb_right-seeeduino_xiao_ble-zmk.uf2` on the **Right XIAO nRF52840**.
+4. Power both halves on at the same time; they will automatically bond to each other over BLE. Pair your computer or phone to **`PKB`** via Bluetooth!
+
+### Step 7: Final Case Assembly
+1. 3D-print [`CAD/3mf/left.3MF`](CAD/3mf/left.3MF) and [`CAD/3mf/right.3MF`](CAD/3mf/right.3MF) in PLA or PETG (`0.2 mm` layer height, 15–20% infill).
+2. Place the 3.7 V LiPo battery into the recessed pocket at the base of each printed enclosure and plug it into the JST-PH connector (`J1`/`J2`).
+3. Seat the assembled PCB into the enclosure, secure it with M2 screws through the mounting holes, press your 42 MX mechanical switches into the hot-swap sockets, and install your keycaps!
+
+---
+
 ## Repository Structure
 
 ```text
@@ -134,7 +181,7 @@ Pre-built `.uf2` firmware binaries are automatically compiled by GitHub Actions 
 │   ├── side.kicad_sch         # Left/Right modular keyboard half schematic
 │   └── Keyboard.kicad_pcb     # Panelized 2-layer PCB layout
 ├── firmware/
-│   ├── boards/shields/pkb/    # ZMK shield definition, devicetree, and Kconfig
+│   ├── boards/shields/pkb/    # ZMK shield definition, devicetree, Kconfig, and C init
 │   ├── config/                # Keymap and ZMK configuration
 │   └── build.yaml             # GitHub Actions build matrix
 ├── images/                    # PCB, schematic, and CAD screenshots
