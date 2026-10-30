@@ -1,21 +1,21 @@
-Item,Qty,Supplier,Cost/item,Total Cost,link
-"SK6812MINI-E Reverse-Mount RGB LED, LCSC C5149201 (D43-D99)",60,LCSC,$0.07,$4.20,https://www.lcsc.com/product-detail/C5149201.html
-"PCF8574AP DIP-16 I2C I/O Expander, LCSC C398072 (U3, U4)",3,LCSC,$0.80,$2.40,https://www.lcsc.com/product-detail/C398072.html
-"Kailh CPG151101S11-16 MX Hot-Swap Socket, LCSC C41430893 (SW1-SW42)",50,LCSC,$0.04,$2.00,https://www.lcsc.com/product-detail/C41430893.html
-"1N4148 DO-35 Diode, LCSC C85057 (D1-D42)",50,LCSC,$0.01,$0.50,https://www.lcsc.com/product-detail/C85057.html
-"2N7000 TO-92 N-MOSFET, LCSC C9114 (Q1, Q2)",10,LCSC,$0.04,$0.40,https://www.lcsc.com/product-detail/C9114.html
-"JST S2B-PH-K-S(LF)(SN) 2-pin PH Header, LCSC C173752 (J1, J2)",20,LCSC,$0.04,$0.80,https://www.lcsc.com/product-detail/C173752.html
-"330 Ohm 1/4W 1% Axial Resistor, LCSC C119313 (R3, R4)",50,LCSC,$0.01,$0.50,https://www.lcsc.com/product-detail/C119313.html
-"47uF 25V Aluminum Electrolytic Cap D6.3mm, LCSC C45704 (C45, C46)",20,LCSC,$0.04,$0.80,https://www.lcsc.com/product-detail/C45704.html
-"100nF 50V X7R Ceramic Cap P=5.08mm, LCSC C84772 (C1-C42, C47, C48)",50,LCSC,$0.04,$2.00,https://www.lcsc.com/product-detail/C84772.html
-"ECE ESP4020 SPDT Slide Switch, LCSC C7472714 (SW43, SW44)",3,LCSC,$1.08,$3.24,https://www.lcsc.com/product-detail/C7472714.html
-"4.7k Ohm 1/4W 5% Axial Resistor, LCSC C120071 (R1, R2, R5-R10)",100,LCSC,$0.01,$1.00,https://www.lcsc.com/product-detail/C120071.html
-"AO3401A SOT-23 P-MOSFET, LCSC C15127 (Q3, Q4)",5,LCSC,$0.10,$0.50,https://www.lcsc.com/product-detail/C15127.html
-"10uF 50V Ceramic Cap TH, LCSC C53084650 (C43, C44)",4,LCSC,$0.87,$3.48,https://www.lcsc.com/product-detail/C53084650.html
-"Custom 2-layer split keyboard PCB, 5 pcs (unibody_pcb_v1.0.0_Y3)",5,JLCPCB,$4.62,$23.10,https://jlcpcb.com
-"Seeed Studio XIAO nRF52840 (U1, U2)",2,Unmanned Tech Shop,$11.99,$23.98,https://www.unmannedtechshop.co.uk/products/seeed-xiao-ble-nrf52840
-"503450 1000mAh 3.7V LiPo battery, 2 pcs JST plug",1,AliExpress,$3.07,$3.07,https://www.aliexpress.com/item/1005004375261361.html
-"0.91 inch 128x32 I2C SSD1306 OLED Display, 0x3C (J3, J4)",2,eBay UK (Hobby Stuff Ltd),$5.16,$10.32,https://www.ebay.co.uk/itm/197218096311
-"Keygeek Full Nylon Linear Switches, 10 pack (SW1-SW42)",5,SerpentKeys,$4.42,$22.10,https://serpentkeys.co.uk
-"PBT Blank DSA Keycaps, 50 pcs, Translucent Black",1,Amazon UK,$14.73,$14.73,https://www.amazon.co.uk
-Estimated total shipping,1,,,$0.00,
+﻿Item,Purpose,Qty,Supplier,Price,Tax,Shipping,Total Cost,Link
+"SK6812MINI-E Reverse-Mount RGB LED, LCSC C5149201 (D43-D99)",Per-key addressable RGB backlight LEDs (60 = 57 sites + spares),60,LCSC,0.0651,0,0,3.91,https://www.lcsc.com/product-detail/C5149201.html
+"PCF8574AP DIP-16 I2C I/O Expander, LCSC C398072 (U3, U4)",I2C GPIO expander for the key matrix on each half (3 = 2 + 1 spare),3,LCSC,0.7998,0,0,2.40,https://www.lcsc.com/product-detail/C398072.html
+"Kailh CPG151101S11-16 MX Hot-Swap Socket, LCSC C41430893 (SW1-SW42)",Hot-swap sockets so switches can be changed without soldering (50 = 42 + spares),50,LCSC,0.0428,0,0,2.14,https://www.lcsc.com/product-detail/C41430893.html
+"1N4148 DO-35 Diode, LCSC C85057 (D1-D42)",One anti-ghosting diode per key (50 = 42 + spares),50,LCSC,0.0134,0,0,0.67,https://www.lcsc.com/product-detail/C85057.html
+"2N7000 TO-92 N-MOSFET, LCSC C9114 (Q1, Q2)",N-channel gate driver for the RGB power switch (10 = MOQ),10,LCSC,0.0446,0,0,0.45,https://www.lcsc.com/product-detail/C9114.html
+"JST S2B-PH-K-S(LF)(SN) 2-pin PH Header, LCSC C173752 (J1, J2)",Battery connector for each half (20 = MOQ),20,LCSC,0.04,0,0,0.80,https://www.lcsc.com/product-detail/C173752.html
+"330 Ohm 1/4W 1% Axial Resistor, LCSC C119313 (R3, R4)",LED data line protection resistor (50 = MOQ),50,LCSC,0.0117,0,0,0.59,https://www.lcsc.com/product-detail/C119313.html
+"47uF 25V Aluminum Electrolytic Cap D6.3mm, LCSC C45704 (C45, C46)",Bulk decoupling for the LED power rail (20 = MOQ),20,LCSC,0.0425,0,0,0.85,https://www.lcsc.com/product-detail/C45704.html
+"100nF 50V X7R Ceramic Cap P=5.08mm, LCSC C84772 (C1-C42, C47, C48)",Decoupling for each LED and the PCF8574AP chips (50 = 44 + spares),50,LCSC,0.0398,0,0,1.99,https://www.lcsc.com/product-detail/C84772.html
+"ECE ESP4020 SPDT Slide Switch, LCSC C7472714 (SW43, SW44)",Power on/off switch for each half,3,LCSC,1.0835,0,0,3.25,https://www.lcsc.com/product-detail/C7472714.html
+"4.7k Ohm 1/4W 5% Axial Resistor, LCSC C120071 (R1, R2, R5-R10)",I2C pull-ups and MOSFET gate bias (100 = MOQ),100,LCSC,0.0063,0,0,0.63,https://www.lcsc.com/product-detail/C120071.html
+"AO3401A SOT-23 P-MOSFET, LCSC C15127 (Q3, Q4)",High-side P-channel switch cutting power to the RGB LEDs,5,LCSC,0.0969,0,0,0.48,https://www.lcsc.com/product-detail/C15127.html
+"10uF 50V Ceramic Cap TH, LCSC C53084650 (C43, C44)",Bulk decoupling for the LED power rail,4,LCSC,0.8658,0,0,3.46,https://www.lcsc.com/product-detail/C53084650.html
+"Custom 2-layer split keyboard PCB, 5 pcs (unibody_pcb_v1.0.0_Y3)",Main board for both keyboard halves,5,JLCPCB,4.62,0,0,23.10,https://jlcpcb.com
+"Seeed Studio XIAO nRF52840 (U1, U2)",Bluetooth microcontroller for each half,2,Unmanned Tech Shop,11.99,0,0,23.98,https://www.unmannedtechshop.co.uk/products/seeed-xiao-ble-nrf52840
+"503450 1000mAh 3.7V LiPo battery, 2 pcs JST plug",Rechargeable battery for each half (one listing = 2 cells),1,AliExpress,3.07,0,0,3.07,https://www.aliexpress.com/item/1005004375261361.html
+"0.91 inch 128x32 I2C SSD1306 OLED Display, 0x3C (J3, J4)",Status display for each half,2,eBay UK (Hobby Stuff Ltd),5.16,0,0,10.32,https://www.ebay.co.uk/itm/197218096311
+"Keygeek Full Nylon Linear Switches, 10 pack (SW1-SW42)","Key switches (5 packs = 50, 42 needed + spares)",5,SerpentKeys,4.42,0,0,22.10,https://serpentkeys.co.uk
+"PBT Blank DSA Keycaps, 50 pcs, Translucent Black",1U keycaps for all 42 keys,1,Amazon UK,14.73,0,0,14.73,https://www.amazon.co.uk
+Tax & shipping (whole order),JLCPCB shipping net of discounts $5.19 + JLCPCB duty/VAT $6.56 + LCSC est. VAT $4.32 + XIAO shipping $4.81 + SerpentKeys shipping $3.69,1,All vendors,24.57,0,0,24.57,
